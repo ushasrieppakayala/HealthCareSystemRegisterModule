@@ -226,7 +226,7 @@ private static void login() throws UserNameException, UserPasswordException {
 				}
 				else
 				{
-					throw new ContactNoException("Invalid Number");
+					throw new ContactNoException("Invalid Number..");
 				}
 				}
 				catch(ContactNoException c)
