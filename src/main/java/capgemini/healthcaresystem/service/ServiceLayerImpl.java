@@ -19,9 +19,9 @@ public class ServiceLayerImpl implements ServiceLayer {
 		return userdao.register(user);
 	}
 	public boolean validateName(String userName) {
-		Pattern p=Pattern.compile("[A-Z]\\w");
+		Pattern p=Pattern.compile("[A-Z]{1}[a-zA-Z0-9]{6,14}$");
 		Matcher m=p.matcher(userName);
-		if(m.find())
+		if(m.find() &&  m.group().equals(userName))
 		   return true;
 		else
 		   return false;
@@ -30,7 +30,7 @@ public class ServiceLayerImpl implements ServiceLayer {
 	public boolean validatePassword(String userPassword) {
 		Pattern p1=Pattern.compile("\\w{1,4}[!@#$%^&*]{1,4}+");
 		Matcher m1=p1.matcher(userPassword);
-		if(m1.find())
+		if(m1.find() && m1.group().equals(userPassword))
 		   return true;
 		else
 		 return false;

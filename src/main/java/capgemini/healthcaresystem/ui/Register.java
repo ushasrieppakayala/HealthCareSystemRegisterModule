@@ -169,7 +169,7 @@ private static void login() throws UserNameException, UserPasswordException {
 
 			try 
 			{ 
-				System.out.println("enter username:");
+				System.out.print("enter username :  ");
 				
 				username = sc.next();
 				if(service.validateName(username))
@@ -188,34 +188,39 @@ private static void login() throws UserNameException, UserPasswordException {
 				System.err.println("username is not valid");
 			}
 			}while(!inputFlag);
-			//System.out.println(user.getUserName());
-	    
-		try {
-		 System.out.println("must contain capital letters,small letters and numbers within 4 places and contain special characters :");
-		 System.out.println("UserPassword : \n ");
-		 String userpassword=sc.next();
-		 if(service.validatePassword(userpassword))
-		 {
-		   System.out.println("Validated Successfully");
-		   user.setUserPassword(userpassword);
-		 }
-		 else
-		 {
-			 throw new UserPasswordException(" Password must contain one number,one alphabet,one special character and size should be at least 8 characters and not more than 14 characters.");
-		 }
+		//System.out.println(user.getUserName());
+			boolean inputFlag2=false;
+			do {
+
+				try {
+					  System.out.print("UserPassword :");
+					  String userpassword=sc.next();
+					  if(service.validatePassword(userpassword))
+					  {
+					   System.out.println("Validated Successfully");
+					   user.setUserPassword(userpassword);
+					   inputFlag2=true;
+					  }
+					 else
+					 {
+						 throw new UserPasswordException(" Password must contain one number,one alphabet,one special character and size should be at least 8 characters and not more than 14 characters.");
+					 }
+					
+				}
+			    catch(UserPasswordException up) {
+					up.printStackTrace();
+				}	
+				}while(!inputFlag2);
 		
-	}
-    catch(UserPasswordException up) {
-		up.printStackTrace();
-	}	
 		//Contact Number
 		boolean inputFlag1 = false;
 		int choice=0;
 		do {
-			System.out.println("Contact No should be of 10 digits: ");
+			
 			sc = new Scanner(System.in);
 			try {
 				
+				System.out.print("Contact No should be of 10 digits : ");
 				
 			    long contactno=sc.nextLong();
 				if(service.validateNum(Long.toString(contactno)))
