@@ -221,7 +221,7 @@ private static void login() throws UserNameException, UserPasswordException {
 				if(service.validateNum(Long.toString(contactno)))
 				{
 				    user.setContactNo(contactno);
-				    System.out.println("validated Successfully");
+				    System.out.println("valid Successfully..");
 				    inputFlag1=true;
 				}
 				else
